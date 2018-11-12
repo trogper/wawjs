@@ -6,7 +6,7 @@
 // - transforming functions (changing parameters)
 // - composition (and())
 
-// common helpers usable aslo elsewhere 
+// common helpers usable aslo elsewhere
 const and = require("./and.js")
 
 const filterArgs = require("./filterArgs.js");
@@ -15,22 +15,21 @@ const isNumber = (any) => typeof any === "number" && any === any;
 
 
 // max implementations
-// this would be manual code, not bad 
+// this would be manual code, not bad
 // however let's try other approach
 // const maxNumber = (...args) => Math.max(...args.filter(isNumber));
 
 // implementation using transforming function
 const maxNumber = filterArgs(Math.max, isNumber);
 
+// const best = (better, items) =>
+//   items.reduce((best, curr) => better(curr, best) ? curr : best);
 
-
-// TODO: other implementations
-const todo = () => {} //TODO: remove and implement functions below, so tests are green
-const minNumber = todo;
-const minInteger = todo;
-const minFinite = todo;
-const isNegative = todo;
-const maxNegativeInteger = todo;
+const minNumber = filterArgs(Math.min, isNumber);//(...arr) => best((a,b)=>a<b, arr.filter(isNumber));
+const minInteger = filterArgs(Math.min, Number.isInteger);
+const minFinite = filterArgs(Math.min, Number.isFinite);
+const isNegative = (n) => n<0;
+const maxNegativeInteger = filterArgs(Math.max, isNumber, isNegative);
 
 // you can use it for outher APIs not only Max
 //const concat = filterArgs(String.prototype.concat.bind(''), (x) => typeof x === "string")
@@ -57,16 +56,13 @@ process.env.SELF_TEST && (() => {
   assert(Number.isNaN(nan),
     "NaN is returned, If any argument cannot be converted to a number, .");
 
-  // TODO: implement max() that will ignore non number params
-  // and return maximal of numbers
   assert(maxNumber(1, 2, 3, "elefant") === 3);
   assert(minNumber(-1, 2, 3, "elefant") === -1);
 
-  // TODO: implement max() that will ignore non number params
-  // and return maximal of numbers
+
   assert(minInteger(-Infinity, 1.33, 2, 3, "elefant") === 2);
 
-  // 
+  
   assert(minNumber(-Infinity, 2, 3, "elefant") === -Infinity);
   assert(minFinite(-Infinity, 2, 3, "elefant") === 2);
 

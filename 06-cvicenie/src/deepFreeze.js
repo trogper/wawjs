@@ -2,9 +2,11 @@
 const traverse = require("traverse");
 
 module.exports = function(o) {
-  //TODO: implement deepFreeze using traverse module
-  //
-  //
+  traverse(o).forEach( function(k,v,o) {Object.freeze(v)} );
+  // traverse(o).forEach(function () {
+  //   this.post((n) => Object.freeze(this.node));
+  // });
+
 }
 //-------------------------- tests ----------------------------------------
 process.env.SELF_TEST && ((deepFreeze) => {
@@ -17,11 +19,14 @@ process.env.SELF_TEST && ((deepFreeze) => {
 
   deepFreeze(o);
   
+  assert.throws(() => o.g = 999,
+    "Cannot define new property"
+  );
   assert.throws(() => o.c.d = 999,
-    /Cannot assign to read only property/
+    "Cannot assign to read only property"
   );
   assert.throws(() => o.f.pop(),
-    /Cannot delete property/
+    "Cannot delete property"
   );
 
   console.error(`[self test]:${__filename}:OK`)

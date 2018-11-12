@@ -1,10 +1,15 @@
 // generic composition
-const pipe = (...fns) =>
-  x => fns.reduce((v, f) => f(v), x);
+//const pipe = (...fns) =>
+//  x => fns.reduce((v, f) => f(v), x);
 
-// function pipe(...fns) {
-//   // TODO: rewrite above reduce to for cycle
-// }
+const pipe = (...fns) => x => {
+  let f;
+  let val = x;
+  while (f = fns.shift())
+    val = f(val);
+  return val;
+}
+
 module.exports = pipe;
 
 
@@ -25,4 +30,3 @@ process.env.SELF_TEST && (() => {
 
   console.error(`[self test]:${__filename}:OK`)
 })();
-

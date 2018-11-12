@@ -1,8 +1,13 @@
-const and = (f1, ...fns) => x => !!fns
-  .reduce((r, fn) => r = r && fn(x), f1(x));
+// const and = (f1, ...fns) => x => !!fns
+//   .reduce((r, fn) => r = r && fn(x), f1(x));
 
-// TODO: reimplement using recursion
-// and quick exit, avoid useles loop of whole array
+const and = (f1, ...fns) => x =>
+  !!f1(x) && (fns.length ? and(...fns)(x) : true);
+
+// const f2 = (f1, ...fns) =>
+//   console.log(f1) + (fns.length ? f2(...fns):"");
+//
+// f2(1,2,3,4,5,6)
 
 module.exports = and;
 
