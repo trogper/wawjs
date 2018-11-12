@@ -1,6 +1,6 @@
 node_modules
 
-
+*.pptx
 
 !.gitignore
 
@@ -47,7 +47,7 @@ Servers
 *.scc
 .svn
 .repository
-*.vspscc  
+*.vspscc
 *.vssscc
 
 
@@ -93,5 +93,3 @@ commonBuild*.js
 #*$
 #,*
 #.#*
-
-

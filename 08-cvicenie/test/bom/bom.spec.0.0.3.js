@@ -7,7 +7,7 @@ describe("bom.js tests", function() {
 
   const bomBuffer = Buffer.from([0xEF, 0xBB, 0xBF])
 
-  it("add bom - shell NOT add redundant bom", (done) => {
+  it("add bom - shall NOT add redundant bom", (done) => {
 
     var chunks = [];
 

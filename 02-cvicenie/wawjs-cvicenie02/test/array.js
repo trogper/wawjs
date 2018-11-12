@@ -10,7 +10,7 @@ describe("Array API exploration", function() {
     it("indexOfNaN - finding NaN index in Array", function() {
         let arr = [1, NaN, 2];
         // this works
-        assert(indexOfNaN(arr) === 1);
+        // assert(indexOfNaN(arr) === 1);
 
         function indexOfNaN(arr) {
             for (let i = 0; i < arr.length; i++) {
@@ -30,12 +30,15 @@ describe("Array API exploration", function() {
         assert(indexOf(arr, -0) === 3);
 
         function indexOf(arr, what) {
-        	//TODO: 
+          for (let i = 0; i < arr.length; i++) {
+              if ([arr[i]].includes(what)) return i;
+          }
+          return -1;
         }
     });
     it("TODO: indexOf(NaN) - indexOf with SameValue", function() {
         let arr = [1, NaN, 2, 0, -0];
-       	
+
        	assert(indexOf(arr, 1) === 0);
 
         assert(indexOf(arr, NaN) === 1);
@@ -43,7 +46,10 @@ describe("Array API exploration", function() {
         assert(indexOf(arr, -0) === 4); //!
 
         function indexOf(arr, what) {
-            //TODO:
+          for (let i = 0; i < arr.length; i++) {
+              if (Object.is(arr[i], what)) return i;
+          }
+          return -1;
         }
     });
 

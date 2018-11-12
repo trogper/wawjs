@@ -233,7 +233,7 @@ describe("cvicenie04 - Object properties concepts", function() {
   });
 
   describe("ownership tests", function() {
-    
+
     it("hasInheritedProperty", function() {
       let x = Object.create(null, { a: { value: 10, enumerable: true } });
       let y = Object.create(x, { b: { value: 20, enumerable: false } });
@@ -259,7 +259,5 @@ describe("cvicenie04 - Object properties concepts", function() {
       assert('a' in y);
     });
   });
-
-
 
 });

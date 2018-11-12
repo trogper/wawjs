@@ -7,7 +7,7 @@ describe("bom.js tests", function() {
 
   const bomBuffer = Buffer.from([0xEF, 0xBB, 0xBF])
 
-  it("add bom - shell add bom to empty file", function(done) {
+  it("add bom - shall add bom to empty file", function(done) {
 
     var chunks = [];
 

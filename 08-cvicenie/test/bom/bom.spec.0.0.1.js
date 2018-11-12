@@ -9,7 +9,7 @@ describe("bom.js tests", function() {
   const bomBuffer = Buffer.from([0xEF, 0xBB, 0xBF])
 
   // 3. define first test
-  it("add bom - shell add bom to file", function(done) {
+  it("add bom - shall add bom to file", function(done) {
 
     // collect all chunks, for asserts
     var chunks = [];
