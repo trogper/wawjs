@@ -1,9 +1,9 @@
 // tested library
-const Copier = require("../src/Copier.js");
+const Copier = require("../src/Copier2.js");
 const fs = require("fs");
 const assert = require("assert");
 
-describe("1) Copying existing files - API styles test", function() {
+describe("2) Copying existing files - API styles test", function() {
 
   it("Copier supports event api", function(done) {
 
