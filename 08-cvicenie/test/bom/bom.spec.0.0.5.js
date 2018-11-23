@@ -17,7 +17,6 @@ describe("bom.js tests", function() {
       .on("error", done)
       .on("data", (chunk) => {
         called++;
-        
       })
       .on("finish", () => {
         //assert(called===1, "all buffered before")

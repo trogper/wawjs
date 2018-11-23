@@ -65,7 +65,7 @@ class RemoveBom extends Transform {
     }
     _flush(cb) {
         if (!this._bomDone)
-            this._pushBuffered();
+            this.push(Buffer.concat([...this._buff]));
         cb();
     }
     _pushBuffered() {

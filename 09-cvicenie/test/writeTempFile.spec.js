@@ -22,7 +22,7 @@ describe("writeTempFile", function() {
     writeTempFile("test02.txt", "sample data", "utf8",
       (err, fileName) => {
         if (err) return done(err);
-        assert(fileName.startsWith(os.tmpdir())); //TODO: naive  
+        assert(fileName.startsWith(os.tmpdir())); //TODO: naive
         done();
       });
   });
@@ -42,7 +42,7 @@ describe("writeTempFile", function() {
         done();
       });
   });
-  it.skip("[BONUS]: writeTempFile has 'same signature' as writeFile", function() {
+  it("[BONUS]: writeTempFile has 'same signature' as writeFile", function() {
     assert.equal(writeTempFile.length, fs.writeFile.length);
   });
 });
