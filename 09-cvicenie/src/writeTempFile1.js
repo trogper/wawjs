@@ -10,10 +10,20 @@ function writeTempFile(fileName, data, options, cb) {
     cb = options;
     options = {};
   }
+  
   let tempDir = path.join(os.tmpdir(), `${process.pid}-`);
-  fs.mkdtemp(tempDir, (err) => {
+  fs.mkdtemp(tempDir, (err, folder) => {
     if (err) return cb(err);
-    fs.writeFile(tempDir)
+    let filePath = `${folder}/${fileName}`;
+    // console.log(filePath);
+    try {
+      fs.writeFile(filePath, data, options, (err) => {
+        if (err) return cb(err);
+        cb(null, filePath);
+      });
+    } catch (e) {
+      cb(e);
+    } finally { }
   })
 }
 // console.log(writeTempFile.length);

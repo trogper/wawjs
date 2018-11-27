@@ -6,9 +6,11 @@ const fs = require("fs");
 const path = require("path");
 
 describe("writeTempFile", function() {
+
   it("writeTempFile is function", function() {
     assert.equal(typeof writeTempFile, "function");
   });
+
   it("writeTempFile returns path to created file on success", function(done) {
     writeTempFile("test01.txt", "sample data", "utf8",
       (err, fileName) => {
@@ -18,6 +20,7 @@ describe("writeTempFile", function() {
         done();
       });
   });
+
   it("writeTempFile creates file under temp directory", function(done) {
     writeTempFile("test02.txt", "sample data", "utf8",
       (err, fileName) => {
@@ -26,6 +29,7 @@ describe("writeTempFile", function() {
         done();
       });
   });
+
   it("writeTempFile creates file under temp directory", function(done) {
     writeTempFile("test03.txt", "sample data", "utf8",
       (err, fileName) => {
@@ -35,6 +39,7 @@ describe("writeTempFile", function() {
         })
       });
   });
+
   it("writeTempFile fails in async fashion (writeFile in sync)", function(done) {
     writeTempFile("test03.txt", "sample data", "FOO",
       (err, fileName) => {
@@ -42,7 +47,9 @@ describe("writeTempFile", function() {
         done();
       });
   });
+
   it("[BONUS]: writeTempFile has 'same signature' as writeFile", function() {
     assert.equal(writeTempFile.length, fs.writeFile.length);
   });
+
 });
