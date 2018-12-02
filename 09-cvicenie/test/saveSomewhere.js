@@ -19,11 +19,12 @@ describe("saveSomewhere", function() {
     ];
     saveSomewhere(paths, "sample", (err, saved) => {
       if (err) return done(err);
-      
+
       assert.equal(saved, `${__dirname}/data/a/sample.txt`);
       done();
     })
   });
+
   it("saveSomewhere fails if none saved", function(done) {
     const paths = [
       `${__dirname}/data/x/sample.txt`,
@@ -35,6 +36,5 @@ describe("saveSomewhere", function() {
       done();
     })
   });
-
 
 });
